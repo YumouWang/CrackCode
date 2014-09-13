@@ -1,7 +1,6 @@
 package LinkList;
 import LinkList.LinkNode;
-
-public class LinkedList {
+public class DoubleLinkedList {
 	public LinkNode head;
 	int pos;
 	
@@ -19,7 +18,6 @@ public class LinkedList {
 		node.setData(value);
 		node.setNext(head);
 		head = node;
-		
 	}
 	public void addLinkTail(LinkNode node) {
 		
@@ -27,14 +25,13 @@ public class LinkedList {
 			this.head = node;
 		}
 		LinkNode current = head;
+		
 		//current = this.head;
 		while(current.getNext() != null) {
 			current = current.getNext();
 		}
-		current.setNext(node);
-		node.setPrev(current);
-		System.out.println("111111111" + current.getData());
-		
+		System.out.println(current.getData() + "111111111");
+		current.setNext(node);	
 	}
 	public void displayList() {
 		LinkNode current = head;
@@ -55,6 +52,7 @@ public class LinkedList {
 		list.addLinkHead(19);
 		list.addLinkTail(end);
 		list.displayList();
-		System.out.println(end.getPrev().getData());
+		//System.out.println(end.getPrev().getData());
 	}
+
 }
