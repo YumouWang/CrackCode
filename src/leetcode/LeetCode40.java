@@ -1,6 +1,7 @@
 package leetcode;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LeetCode40 {
@@ -9,22 +10,26 @@ public class LeetCode40 {
 			return null;
 		}
 
-		List<List<Integer>> result = new ArrayList<List<Integer>>();		
+		List<List<Integer>> result = new ArrayList<List<Integer>>();
 		List<Integer> numList = new ArrayList<Integer>();
 		for (int i = 0; i < num.length; i ++) {
 			if (num[i] <= target) {
 				numList.add(num[i]);
 			}
 		}
-		numList.sort(null);		
-		result = combinationSum(numList, target);		
+		Collections.sort(numList);
+		result = combinationSum(numList, target);
 		return result;
     }
 	
 	public List<List<Integer>> combinationSum(List<Integer> num, int target) {
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
-		List<Integer> numList = num;
-		if (num.size() == 0 || num == null) {
+		List<Integer> numList = new ArrayList<Integer>();
+		if (num.size() == 0) {
+			return result;
+		}
+		if (target == 0) {
+			result.add(new ArrayList<Integer>());
 			return result;
 		}
 		if (num.size() == 1) {
@@ -37,24 +42,32 @@ public class LeetCode40 {
 				return result;
 			}
 		}
-		for (int i = 0; i < num.size(); i ++) {
-			int number = num.get(i);
-			numList = num;
+		
+		numList.clear();
+		for (int j = 0; j < num.size();j ++) {
+			numList.add(num.get(j));
+		}
+		for (int i = 0; i < numList.size(); i ++) {
+			int number = numList.get(i);			
 			numList.remove(i);
-			System.out.println(numList);
 			List<List<Integer>> temp = combinationSum(numList, target - number);
-			for (List<Integer> list : temp) {
-				list.add(number);
-				result.add(list);
-			}
+			if (temp != null) {			
+				for (List<Integer> list : temp) {
+					List<Integer> currentResult = list;
+					currentResult.add(number);
+					//Collections.sort(currentResult);
+					if (!result.contains(currentResult)) {
+						result.add(currentResult);
+					}				
+				}
+			}			
 		}
 		return result;
 	}
 	
 	public static void main(String[] args) {
 		LeetCode40 l = new LeetCode40();
-		int[] num = new int[]{10,1,2,7,6,1,5};
-		System.out.println(l.combinationSum2(num, 8));
+		int[] num = new int[]{5,4,5,1,5,3,1,4,5,5,4};
+		System.out.println(l.combinationSum2(num, 10));
 	}
-
 }
