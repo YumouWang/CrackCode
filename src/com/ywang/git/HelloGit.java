@@ -1,5 +1,7 @@
 package com.ywang.git;
 
 public class HelloGit {
-
+	public static void main() {
+		
+	}
 }
