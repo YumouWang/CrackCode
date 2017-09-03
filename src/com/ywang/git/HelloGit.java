@@ -8,6 +8,7 @@ public class HelloGit {
 		
 		System.out.println();
 		
-		double master_branch = 1.1;
+		double master_branch_1 = 1.1;
+		double master_branch_2 = 1.2;
 	}
 }
