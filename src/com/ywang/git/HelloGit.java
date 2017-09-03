@@ -5,6 +5,7 @@ public class HelloGit {
 		int branch1 = 1;
 		int version = 1;
 		double local_branch = 1.1;
+		double local_branch_2 = 1.2;
 		
 		System.out.println();
 		
