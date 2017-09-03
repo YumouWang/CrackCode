@@ -7,5 +7,7 @@ public class HelloGit {
 		double local_branch = 1.1;
 		
 		System.out.println();
+		
+		double master_branch = 1.1;
 	}
 }
